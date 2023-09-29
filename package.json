@@ -1,5 +1,27 @@
 {
   "name": "squealer",
   "version": "1.0.0",
-  "license": "MIT"
+  "license": "MIT",
+  "description": "Project for the Web Technology course (2022/2023) of the University of Bologna.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"node server/server.js\" \"cd client/my-react-app && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgabellini1/squealer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/lgabellini1/squealer/issues"
+  },
+  "homepage": "https://github.com/lgabellini1/squealer#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
 }
