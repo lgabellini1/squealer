@@ -1,0 +1,97 @@
+{
+    "files.associations": {
+		"*.h": "c"
+	},
+
+
+/*
+// start bash, not the mintty, or you'll get a new window
+  "terminal.integrated.shell.windows": "C:\\CygWin64\\cygwin64\\bin\\bash.exe",
+  // Use this to keep bash from doing a 'cd ${HOME}'
+  "terminal.integrated.env.windows": {
+    "CHERE_INVOKING": "1"
+  },
+  // Make it a login shell
+  "terminal.integrated.shellArgs.windows": [
+    "-l"
+  ],
+  */
+  	// THEME
+	"workbench.preferredDarkColorTheme": "Monokai Dimmed",
+	"workbench.colorTheme": "Monokai",
+	
+	// EDITOR
+	"editor.selectionClipboard": false,		//vertical selection middle mouse
+
+	// INDENT
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+  
+	// ERRORS
+	"problems.decorations.enabled": true,
+	"explorer.decorations.colors": true,
+	"explorer.decorations.badges": true,
+
+	// AUTOCOMPLETE
+	"workbench.activityBar.visible": true,
+
+	// C/C++
+	"C_Cpp.default.compilerPath": "/usr/bin/gcc",
+	// C - ERRORS
+	"C_Cpp.default.enableConfigurationSquiggles": true,
+	"C_Cpp.codeAnalysis.clangTidy.enabled": true,		//auto-runs task/build, to check errors
+	"C_Cpp.codeAnalysis.exclude": {},
+	"C_Cpp.codeAnalysis.runAutomatically": true,	//
+	"C_Cpp.errorSquiggles": "enabled",				//sottolineatura rossa attivata
+	"C_Cpp.intelliSenseEngine": "default",
+
+	// C - AUTOCOMPLETE
+	"C_Cpp.autocomplete": "default",
+	"C_Cpp.autocompleteAddParentheses": true,
+
+	// PYTHON
+
+	"python.analysis.typeCheckingMode": "basic",
+	"python.analysis.include": ["C:\\Conda\\envs\\spyderenv\\Lib\\site-packages"],
+
+	// PYTHON - LINTING
+	"python.linting.enabled": true,
+	"python.linting.pylintEnabled": true,
+	"python.analysis.extraPaths": [
+		"lib"
+	],
+	/*
+		pylint disabled...
+		C = conventions,
+		W = warnings,
+		E = errors,
+		R = refactoring
+	*/
+	"python.linting.pylintArgs": [
+		"--disable=C0103",
+		"--disable=C0114",
+		"--disable=C0115",
+		"--disable=C0116",
+		"--disable=C0303",
+		"--disable=C0301",
+		"--disable=C0304",
+		"--disable=C0311",
+		"--disable=C0321",
+		"--disable=C0325",
+		"--disable=C3001",
+		"--disable=C0411",
+		"--disable=C0413",
+		"--disable=R0913",
+		"--disable=R0914",
+		"--disable=R1705",
+		"--disable=W0012",
+		"--disable=W0105",
+		"--disable=W0311",
+		"--disable=W0702",
+		"--disable=W0718",
+		"--disable=W0719",
+		"--disable=W1514"
+	]
+
+}

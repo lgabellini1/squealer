@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import * as posts_api from "../../network/posts_api";
-import Post from "../Post";
+import * as posts_api from "../network/posts_api";
+import Post from "../components/Post";
 import { Container } from "react-bootstrap";
 
 const Feed = (props) => {
