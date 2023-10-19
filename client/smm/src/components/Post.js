@@ -1,21 +1,13 @@
 import { Card, Col, Row } from "react-bootstrap";
 import { Text } from "react-native";
 import styles from "../styles/Post.module.css";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import Reaction from "./Reaction";
+import { REACTION_ICONS } from "./Icons";
 
 
 const POST_FIELDS = ["id", "title", "text", "sender", "receiver", "date", "impression", "positive", "negative"];
 /* positive and negative (reactions) are fetched already calculated with CM.
 */
-
-const REACTION_ICONS = [
-	[VisibilityIcon, "impression"],
-	[SentimentVerySatisfiedIcon, "positive"],
-	[SentimentVeryDissatisfiedIcon, "negative"]
-];
 
 
 
@@ -37,7 +29,7 @@ const Post = ({ post }) => {
 		<div className="d-flex">
 			<Row style={{}}>
 			{
-				REACTION_ICONS.map( ([Icon, attr], index) => (
+				Object.entries(REACTION_ICONS).map( ([attr, Icon], index) => (
 					<Col key={index} className={`p-0`} style={{width:"10%"}}>
 						<Reaction Icon={Icon} text={post[attr]} />
 					</Col>

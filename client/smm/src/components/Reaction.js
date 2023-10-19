@@ -14,7 +14,7 @@ const Reaction = ({ Icon, text }) => {
 		) + "rem";
 
 	return (
-		<div class="h-100 d-flex align-items-center">
+		<div className="h-100 d-flex align-items-center">
 			<Icon style={{width:"2rem"}}/>
 			<span className="d-inline-block" style={{width:TEXT_WIDTH, fontSize:FONT_SIZE }}>{ text }</span>
 		</div>
