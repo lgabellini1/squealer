@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import * as posts_api from "../network/posts_api";
 import Post from "../components/Post";
 import { Container } from "react-bootstrap";
+import '../styles/App.css';
 
-const Feed = (props) => {
 
-	const { id } = props;
+const Feed = ({ id, className }) => {
 
 	const [ posts, setPosts] = useState([]);
 	const [ postsLoading, setPostsLoading] = useState(true);
@@ -24,9 +24,9 @@ const Feed = (props) => {
 		}
 		loadPosts();
 	}, []);
-	
+
 	const postsGrid = 
-		<Container fluid id={id} className="py-2">
+		<Container fluid id={id} className={`d-flex flex-column ${className}`}>
 			{
 				posts.map( (post, index) => (
 					<div key={index} className="my-2">
@@ -35,6 +35,7 @@ const Feed = (props) => {
 				))
 			}
 		</Container>
+
 
 	return (
 		<>

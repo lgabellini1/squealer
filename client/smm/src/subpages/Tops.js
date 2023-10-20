@@ -1,23 +1,24 @@
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Top from "../components/Top";
+import "../styles/App.css";
 
-const Tops = () => {
+const Tops = ({ id, className }) => {
 	
 		const TOPS_INIT = [
 			{
-				n: 3,
+				n: 5,
 				users: null,
 				sort_key: "impression"
 			},
 			{
-				n: 3,
+				n: 5,
 				users: null,
 				sort_key: "positive"
 			},
 			{
-				n: 3,
-				users: null,
+				n: 5,
+				users: ["Amy"],
 				sort_key: "negative"
 			}
 		];
@@ -37,7 +38,7 @@ const Tops = () => {
 	}, [TOPS_INIT.length]);
 
 	const topsGrid =
-		<div className="d-flex flex-column">
+		<Container fluid id={id} className={`d-flex flex-column gap-5 p-4 ${className}`}>
 			{
 				TOPS_INIT.slice(0, topsNumber).map( (top, index) => (
 					<div key={index}>
@@ -45,7 +46,7 @@ const Tops = () => {
 					</div>
 				))
 			}
-		</div>
+		</Container>
 
 	
 	return (

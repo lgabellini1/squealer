@@ -13,37 +13,40 @@
 }
 
 #main-container {
-	padding-left: 0;
-	padding-right: 0;
+	overflow: hidden;
+	padding: 0;
 }
-#main-container > * > * > * {
-	height: 100%;
-}
-
-#feed {
-	background-color: lightseagreen;
+#main-container > .row {
+	margin: 0;
 }
 
-/*
- * scrolling
- */
+.feed {
+	background-color: azure;
+}
+.tops {
+	background-color: antiquewhite;
+}
 
-#main-container > * > * > * {
+.mainSubpage {
 	overflow: auto;
+	height: 100%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	margin: 0;
 }
 
 /* scroll bar */
-*::-webkit-scrollbar {
+.mainSubpage::-webkit-scrollbar {
 	width: 0.5em;
   }
-*::-webkit-scrollbar-track {
+.mainSubpage::-webkit-scrollbar-track {
 	background-color: #f1f1f1;
   }
-*::-webkit-scrollbar-thumb {
+.mainSubpage::-webkit-scrollbar-thumb {
 	background-color: #556583;
 	border-radius: 1em;
   }
-*::-webkit-scrollbar-thumb:hover {
+.mainSubpage::-webkit-scrollbar-thumb:hover {
 	background-color: #555;
   }
 

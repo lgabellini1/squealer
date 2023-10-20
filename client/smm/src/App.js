@@ -7,7 +7,7 @@ import Tops from './subpages/Tops';
 
 function App() {
 	return (
-		<div className="App vh-100">
+		<div className="App vh-100 vw-100">
 			<Navbar
 				className="bg-info fixed-top"
 				dir="horizontal"
@@ -19,13 +19,13 @@ function App() {
 					ciao
 				</Navbar.Text>
 			</Navbar>
-			<Container id="main-container" fluid className="h-100">
-				<Row className="h-100">
-					<Col className="h-100">
-						<Feed id="feed"/>
+			<Container fluid id="main-container" className="h-100 w-100">
+				<Row className="h-100 w-100">
+					<Col className="h-100 w-100 p-0">
+						<Feed id="feed" className="feed mainSubpage"/>
 					</Col>
-					<Col>
-						<Tops id="tops"/>
+					<Col className="h-100 w-100 p-0">
+						<Tops id="tops" className="tops mainSubpage"/>
 					</Col>
 				</Row>
 			</Container>
