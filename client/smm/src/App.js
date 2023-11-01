@@ -1,35 +1,85 @@
 import React from 'react'
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
-import { Col, Container, Navbar, NavbarBrand, Row } from 'react-bootstrap';
-import Feed from './subpages/Feed';
-import Tops from './subpages/Tops';
+import './styles/Login.css';
+import AppNavbar from './subpages/AppNavbar';
+import MainPage from './pages/MainPage';
+import FeedPage from './pages/FeedPage';
+import TopsPage from './pages/TopsPage';
+import * as users_api from './network/users_api';
+import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import Redirect from './pages/Redirect';
+
 
 function App() {
+
+	const [ smm, setSmm ] = useState(null);
+	const [ vips, setVips ] = useState([]);
+
+	useEffect(() => {
+		async function loadSmm() {
+			try {
+				//setSmm("smmPippo");
+				const vips = await users_api.fetchVips("smmPippo");
+				setVips(vips);
+			} catch(error) {
+				console.log(error);
+			}
+		}
+		if(smm != null) {
+			loadSmm();
+		}
+	}, [smm]);
+
 	return (
-		<div className="App vh-100 vw-100">
-			<Navbar
-				className="bg-info fixed-top"
-				dir="horizontal"
-			>
-				<NavbarBrand>
-					<img src={logo} className="bg-black" alt="logo" width={'10%'}/>
-				</NavbarBrand>
-				<Navbar.Text className="bg-danger">
-					ciao
-				</Navbar.Text>
-			</Navbar>
-			<Container fluid id="main-container" className="h-100 w-100">
-				<Row className="h-100 w-100">
-					<Col className="h-100 w-100 p-0">
-						<Feed id="feed" className="feed mainSubpage"/>
-					</Col>
-					<Col className="h-100 w-100 p-0">
-						<Tops id="tops" className="tops mainSubpage"/>
-					</Col>
-				</Row>
-			</Container>
-		</div>
+		<BrowserRouter className="App vh-100 vw-100 d-flex flex-column">
+
+			<div className="App vh-100 vw-100 d-flex flex-column">
+				<AppNavbar />
+				
+				<Routes>
+					{ smm === null ? 
+						<>
+							<Route
+								path='/login'
+								element={<LoginPage setSmm={setSmm} />}
+							/>
+							<Route
+								path='/signup'
+								element={<SignupPage setSmm={setSmm} />}
+							/>
+							<Route
+								path='/*'
+								element={<Redirect to='/login' />}
+							/>
+						</>
+						:
+						<>
+							<Route
+								path='/'
+								element={<MainPage smm={smm} vips={vips} />}
+								/>
+							<Route
+								path='/feed'
+								element={<FeedPage vips={vips} />}
+							/>
+							<Route
+								path='/tops'
+								element={<TopsPage vips={vips} />}
+							/>
+							<Route
+								path='/*'
+								element={<NotFoundPage />}
+							/>
+						</>
+					}
+				</Routes>
+			</div>
+
+		</BrowserRouter>
 	);
 }
 

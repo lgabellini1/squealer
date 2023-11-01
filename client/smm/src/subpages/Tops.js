@@ -1,46 +1,50 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Top from "../components/Top";
 import "../styles/App.css";
+import { deepCopy } from "../utils/objects.js";
 
-const Tops = ({ id, className }) => {
+
+const TOPS_INIT = [
+	{
+		n: 5,
+		users: null,
+		sort_key: "impression"
+	},
+	{
+		n: 5,
+		users: null,
+		sort_key: "positive"
+	},
+	{
+		n: 5,
+		users: null,
+		sort_key: "negative"
+	}
+];
+
+const Tops = ({ id, className, vips }) => {
 	
-		const TOPS_INIT = [
-			{
-				n: 5,
-				users: null,
-				sort_key: "impression"
-			},
-			{
-				n: 5,
-				users: null,
-				sort_key: "positive"
-			},
-			{
-				n: 5,
-				users: ["Amy"],
-				sort_key: "negative"
-			}
-		];
-
-	const [ topsNumber, setTopsNumber ] = useState(0);
+	const [ tops, setTops ] = useState([]);
 
 	useEffect(() => {
-		async function loadTopsNumber() {
-			try {
-				const topsNumber = TOPS_INIT.length;
-				setTopsNumber(topsNumber);
-			} catch(error) {
-				console.log(error);
-			}
+		async function loadTops() {
+			setTops(
+				// deep copy to avoid to avoid calling useEffect in loop
+				deepCopy(TOPS_INIT).map( top => (
+					{
+						...top,
+						users: vips
+					}
+				)));
 		}
-		loadTopsNumber();
-	}, [TOPS_INIT.length]);
+		loadTops();
+	}, [vips]);
 
 	const topsGrid =
 		<Container fluid id={id} className={`d-flex flex-column gap-5 p-4 ${className}`}>
 			{
-				TOPS_INIT.slice(0, topsNumber).map( (top, index) => (
+				tops.map( (top, index) => (
 					<div key={index}>
 						<Top n={top.n} users={top.users} sort_key={top.sort_key} />
 					</div>

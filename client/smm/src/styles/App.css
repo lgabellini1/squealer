@@ -4,20 +4,23 @@
  */
 
 .App {
-  padding-top: 5%;
   overflow: hidden;
 }
 
-.App nav {
-	height: 5%;
-}
-
-#main-container {
+.mainContainer {
 	overflow: hidden;
 	padding: 0;
+	width: 100%;
 }
-#main-container > .row {
+.mainContainer > .row {
 	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+.mainContainer > .row > .col {
+	height: 100%;
+	width: 100%;
+	padding: 0;
 }
 
 .feed {
@@ -32,7 +35,6 @@
 	height: 100%;
 	padding-top: 5%;
 	padding-bottom: 5%;
-	margin: 0;
 }
 
 /* scroll bar */
