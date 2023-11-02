@@ -1,12 +1,29 @@
-import { Button, Container, Form, Image, Nav, Navbar } from "react-bootstrap";
+import React from "react";
+import { useEffect, useState } from "react";
+import { Button, Collapse, Container, Dropdown, Form, Image, Nav, Navbar } from "react-bootstrap";
 import logo from '../logo.svg';
 import { NavLink } from "react-router-dom";
 
 
 
-const AppNavbar = () => {
+const AppNavbar = ({ smm }) => {
 	
+	const [ open, setOpen ] = useState(false);
 
+
+	const UserDropdownToggle = React.forwardRef(({ children, onClick }, ref) => (
+		<Button
+			className="userDropdownToggle"
+			ref={ref}
+			onClick={(e) => {
+				e.preventDefault();
+				onClick(e);
+			}}
+		>
+			{children}
+		</Button>
+	));
+	
 	return (
 		//rgb(204, 166, 212)"}}>
 		<Navbar expand="sm" className="navbar-expand-lg bg-body-secondary">
@@ -29,10 +46,29 @@ const AppNavbar = () => {
 							<Nav.Link as={NavLink} to="/tops" >Tops</Nav.Link>
 						</Nav.Item>
 					</Nav>
+					
+					{ smm && 
+						<>
+							<Dropdown className="ml-auto">
+								<Dropdown.Toggle as={UserDropdownToggle} id="dropdown-basic">
+									{smm}
+								</Dropdown.Toggle>
+
+								<Dropdown.Menu style={{right:0, left:'auto'}}>
+									<Dropdown.Item href="#/profile">Profile</Dropdown.Item>
+									<Dropdown.Item href="#/preferences">Preferences</Dropdown.Item>
+									<Dropdown.Divider />
+									<Dropdown.Item href="#/logout">Logout</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
+						</>
+					}
+					{/*
 					<Form className="d-flex" role="search">
 						<Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
 						<Button variant="outline-success" type="submit">Search</Button>
 					</Form>
+					*/}
 				</Navbar.Collapse>
 
 			</Container>

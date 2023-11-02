@@ -1,6 +1,8 @@
 export const USERS_TEST = [
 	{
 		smm: "smmPippo",
+		email: "smmPippo@gmail.com",
+		password: "imapippo",
 		vips: [
 			"Amy",
 			"Emily"
@@ -8,6 +10,8 @@ export const USERS_TEST = [
 	},
 	{
 		smm: "plutO",
+		email: "pluto0@gmail.com",
+		password: "mypass",
 		vips: [
 			"Amy",
 			"John",
@@ -17,6 +21,8 @@ export const USERS_TEST = [
 	},
 	{
 		smm: "TopoPippo1",
+		email: "TopoPippone@yahoo.it",
+		password: "1234",
 		vips: [
 			"John"
 		]

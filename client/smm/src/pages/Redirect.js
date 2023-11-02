@@ -8,7 +8,7 @@ const Redirect = ({ to }) => {
 
 	useEffect(() => {
 		navigate(to);
-	}, []);
+	}, [navigate, to]);
 
 	return (
 		<div>

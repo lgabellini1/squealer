@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 import './styles/Login.css';
+import './styles/Nav.css';
 import AppNavbar from './subpages/AppNavbar';
 import MainPage from './pages/MainPage';
 import FeedPage from './pages/FeedPage';
@@ -16,7 +17,7 @@ import Redirect from './pages/Redirect';
 
 function App() {
 
-	const [ smm, setSmm ] = useState(null);
+	const [ smm, setSmm ] = useState("pippo");
 	const [ vips, setVips ] = useState([]);
 
 	useEffect(() => {
@@ -38,7 +39,7 @@ function App() {
 		<BrowserRouter className="App vh-100 vw-100 d-flex flex-column">
 
 			<div className="App vh-100 vw-100 d-flex flex-column">
-				<AppNavbar />
+				<AppNavbar smm={smm} />
 				
 				<Routes>
 					{ smm === null ? 

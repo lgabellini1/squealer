@@ -2,6 +2,7 @@
 .formCard {
 	min-width: 60%;
 	min-height: 40vh;
+	padding: 5% 5%;
 }
 
 .formCard .card-body {
@@ -18,15 +19,27 @@
 	border: 0;
 	border-bottom: 1px solid #ccc;
 	box-shadow: none;
-	font-weight: 300;
+	font-weight: 500;
 	color: #333;
 	background: transparent;
 }
 
+.formCard .form-label {
+	font-weight: 800;
+}
+
 .formCard form {
-	height: 100%;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+}
+
+.formCard form button {
+	margin-top: 1.2rem;
+	margin-bottom: .8rem;
+	border: 0;
+	box-shadow: none;
+	font-weight: 600;
+	color: #333;
+	background: #b4cdff;
 }

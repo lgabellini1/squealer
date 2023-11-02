@@ -52,8 +52,8 @@ const FeedPage = ({ vips }) => {
 									label={vip}
 									checked={checked[index]}
 									onChange={handleCheckboxChange(index)}
-									/>
-									))}
+								/>
+							)) }
 						</div>
 					</Collapse>
 				</Col>
