@@ -7,6 +7,8 @@ import './styles/Nav.css';
 import AppNavbar from './subpages/AppNavbar';
 import MainPage from './pages/MainPage';
 import FeedPage from './pages/FeedPage';
+import ProfilePage from './pages/profile/ProfilePage';
+import PreferencesPage from './pages/profile/PreferencesPage';
 import TopsPage from './pages/TopsPage';
 import * as users_api from './network/users_api';
 import NotFoundPage from './pages/NotFoundPage';
@@ -39,7 +41,7 @@ function App() {
 		<BrowserRouter className="App vh-100 vw-100 d-flex flex-column">
 
 			<div className="App vh-100 vw-100 d-flex flex-column">
-				<AppNavbar smm={smm} />
+				<AppNavbar smm={smm} setSmm={setSmm} />
 				
 				<Routes>
 					{ smm === null ? 
@@ -70,6 +72,14 @@ function App() {
 							<Route
 								path='/tops'
 								element={<TopsPage vips={vips} />}
+							/>
+							<Route
+								path='/profile'
+								element={<ProfilePage smm={smm} />}
+							/>
+							<Route
+								path='/preferences'
+								element={<PreferencesPage />}
 							/>
 							<Route
 								path='/*'

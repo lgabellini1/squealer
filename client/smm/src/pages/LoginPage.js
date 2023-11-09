@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import LoggedOutPage from "./LoggedOutPage";
+import LoggedOutPage from "./LoggedOutCard.js";
 import * as users_api from "../network/users_api.js";
 
 

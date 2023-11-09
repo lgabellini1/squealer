@@ -6,7 +6,7 @@ import Tops from '../subpages/Tops';
 const MainPage = ({smm, vips}) => {
 
 	return (
-		<Container fluid id="main-container" className="mainContainer">
+		<Container fluid id="main-container" className="mainContainer profileContainer">
 			<Row>
 				<Col>
 					<Feed id="feed" className="feed mainSubpage" vips={vips}/>

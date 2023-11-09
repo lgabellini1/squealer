@@ -2,11 +2,11 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Button, Collapse, Container, Dropdown, Form, Image, Nav, Navbar } from "react-bootstrap";
 import logo from '../logo.svg';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 
-const AppNavbar = ({ smm }) => {
+const AppNavbar = ({ smm, setSmm }) => {
 	
 	const [ open, setOpen ] = useState(false);
 
@@ -23,6 +23,11 @@ const AppNavbar = ({ smm }) => {
 			{children}
 		</Button>
 	));
+
+	const handleLogout = (event) => {
+		event.preventDefault();
+		setSmm(null);
+	  };
 	
 	return (
 		//rgb(204, 166, 212)"}}>
@@ -55,10 +60,14 @@ const AppNavbar = ({ smm }) => {
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{right:0, left:'auto'}}>
-									<Dropdown.Item href="#/profile">Profile</Dropdown.Item>
-									<Dropdown.Item href="#/preferences">Preferences</Dropdown.Item>
+									<Dropdown.Item as={Link} to="/profile" >Profile</Dropdown.Item>
+									<Dropdown.Item as={Link} to="/preferences" >Preferences</Dropdown.Item>
 									<Dropdown.Divider />
-									<Dropdown.Item href="#/logout">Logout</Dropdown.Item>
+									<Dropdown.Item
+										onClick={handleLogout}
+									>
+										Logout
+									</Dropdown.Item>
 								</Dropdown.Menu>
 							</Dropdown>
 						</>

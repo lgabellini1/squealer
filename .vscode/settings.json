@@ -33,9 +33,6 @@
 	"explorer.decorations.colors": true,
 	"explorer.decorations.badges": true,
 
-	// AUTOCOMPLETE
-	"workbench.activityBar.visible": true,
-
 	// C/C++
 	"C_Cpp.default.compilerPath": "/usr/bin/gcc",
 	// C - ERRORS
