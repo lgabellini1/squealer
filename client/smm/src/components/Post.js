@@ -3,27 +3,13 @@ import { Text } from "react-native";
 import styles from "../styles/Post.module.css";
 import Reaction from "./Reaction";
 import { REACTION_ICONS } from "./Icons";
-
-
-const POST_FIELDS = ["id", "title", "text", "sender", "receiver", "date", "impression", "positive", "negative"];
-/* positive and negative (reactions) are fetched already calculated with CM.
-*/
+import { parsePost } from "../models/models.js";
 
 
 
 const Post = ({ post }) => {
 
-	const {
-		id,
-		receiver,
-		sender,
-		text,
-		title,
-		date,
-		impression,
-		positive,
-		negative
-	} = post;
+	const parsed_post = parsePost(post);
 
 	const reactionsGrid = 	
 		<div className="d-flex">
@@ -43,16 +29,16 @@ const Post = ({ post }) => {
 		<Card className="">
 			<Card.Header className="" style={{padding:".3rem 1rem 0"}}>
 				<div className="d-flex justify-content-between">
-					<Text className="">{ sender }</Text>
-					<Text className=""><span className={styles.textSecondary}>to: </span>{ receiver }</Text>
+					<Text className="">{ parsed_post.sender }</Text>
+					<Text className=""><span className={styles.textSecondary}>to: </span>{ parsed_post.receiver }</Text>
 				</div>
 				<div className="d-flex">
-					<span className={styles.textSecondary}>{ date }</span>
+					<span className={styles.textSecondary}>{ parsed_post.date }</span>
 				</div>
 			</Card.Header>
 			<Card.Body>
-				<Card.Title> { title } </Card.Title>
-				<Card.Text> { text } </Card.Text>
+				<Card.Title> { parsed_post.title } </Card.Title>
+				<Card.Text> { parsed_post.text } </Card.Text>
 			</Card.Body>
 			<Card.Footer className="d-flex justify-content-between" style={{padding:"0.2rem 1rem"}}>
 				{ reactionsGrid }

@@ -1,3 +1,17 @@
 .uppercase {
 	  text-transform: uppercase;
 }
+
+.centerContent {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+}
+.centerContentHorizontal {
+	  display: flex;
+	  align-items: center;
+}
+.centerContentVertical {
+	  display: flex;
+	  justify-content: center;
+}

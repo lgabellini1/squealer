@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Collapse, Container, Form, Row } from "react-bootstrap";
 import Feed from "../subpages/Feed";
+import MessageIcon from '@mui/icons-material/Message';
 
 const FeedPage = ({ vips }) => {
 
@@ -15,6 +16,10 @@ const FeedPage = ({ vips }) => {
 		setSelectedVips(
 			vips.filter( (vip, index) => newChecked[index] )
 		);
+	};
+	
+	const handleMessageButtonClick = () => {
+
 	};
 
 	useEffect(() => {
@@ -34,13 +39,20 @@ const FeedPage = ({ vips }) => {
 	return (
 		<Container className="mainContainer">
 			<Row>
-				<Col xs={2}>
+				<Col className="d-flex flex-column centerContentHorizontal" xs={2}>
+					<Button
+						className="m-2 ratio-1x1 centerContent"
+						style={{ backgroundColor: "navy", width: "50%" }}
+						onClick={handleMessageButtonClick}
+					>
+						<MessageIcon className="" style={{ fontSize: "xxx-large" }} />
+					</Button>
 					<Button
 						className="m-2"
 						onClick={() => setOpen(!open)}
 						aria-controls="collapse-choose-vips"
 						aria-expanded={open}
-						>
+					>
 						FILTER VIPS
 					</Button>
 					<Collapse in={open}>
