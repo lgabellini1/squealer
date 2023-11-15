@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Button, Col, Collapse, Container, Form, Row } from "react-bootstrap";
 import Feed from "../subpages/Feed";
 import MessageIcon from '@mui/icons-material/Message';
+import AddPostDialog from "../components/AddPostDialog";
 
 const FeedPage = ({ vips }) => {
 
 	const [ open, setOpen ] = useState(false);
 	const [ checked, setChecked ] = useState([]);
 	const [ selectedVips, setSelectedVips ] = useState([]);
+	const [ showAddPostDialog, setShowAddNoteDialog ] = useState(false);
   
 	const handleCheckboxChange = (index) => (event) => {
 		const newChecked = [...checked];
@@ -19,7 +21,7 @@ const FeedPage = ({ vips }) => {
 	};
 	
 	const handleMessageButtonClick = () => {
-
+		setShowAddNoteDialog(true);
 	};
 
 	useEffect(() => {
@@ -73,6 +75,16 @@ const FeedPage = ({ vips }) => {
 				<Col>
 					<Feed id="feed" className="feed mainSubpage" vips={selectedVips} />
 				</Col>	
+
+				{ showAddPostDialog &&
+					<AddPostDialog
+						onDismiss={() => setShowAddNoteDialog(false)}
+						onPostSaved={(newPost) => {
+							setShowAddNoteDialog(false);
+						}}
+					/>
+				}
+
 			</Row>
 		</Container>
 	);

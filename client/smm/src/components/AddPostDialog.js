@@ -1,27 +1,27 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import * as NotesApi from "../network/notes_api";
-import TextInputField from "./forn/TextInputField";
+import * as PostsApi from "../network/posts_api";
+import TextInputField from "./form/TextInputField";
 
 
-const WritePost = ({ noteToEdit, onDismiss, onNoteSaved }) => {
+const AddPostDialog = ({ postToEdit, onDismiss, onPostSaved }) => {
 
 	const { register, handleSubmit, formState : { errors, isSubmitting } } = useForm({
 		defaultValues: {
-			title: noteToEdit?.title || "",
-			text: noteToEdit?.text || "",
+			title:	(postToEdit && postToEdit.title)	? postToEdit.title	: "",
+			text:	(postToEdit && postToEdit.text)		? postToEdit.text	: "",
 		}
 	});
 
 	async function onSubmit(input) {
 		try {
-			let noteResponse;
-			if(noteToEdit) {
-				noteResponse = await NotesApi.updateNote(input);
+			let postResponse;
+			if(postToEdit) {
+				postResponse = await PostsApi.updatePost(input);
 			} else {
-				noteResponse = await NotesApi.createNote(input);
+				postResponse = await PostsApi.createPost(input);
 			}
-			onNoteSaved(noteResponse);
+			onPostSaved(postResponse);
 		} catch (error) {
 			console.error(error);
 			alert(error);
@@ -32,7 +32,7 @@ const WritePost = ({ noteToEdit, onDismiss, onNoteSaved }) => {
 		<Modal show onHide={onDismiss}>
 			<Modal.Header closeButton>
 				<Modal.Title>
-					{noteToEdit ? "Edit note" : "Add note"}
+					{postToEdit ? "Edit note" : "Add note"}
 				</Modal.Title>
 			</Modal.Header>
 
@@ -72,4 +72,4 @@ const WritePost = ({ noteToEdit, onDismiss, onNoteSaved }) => {
 	);
 }
 
-export default WritePost;
+export default AddPostDialog;

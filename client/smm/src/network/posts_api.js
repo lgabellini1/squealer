@@ -68,6 +68,8 @@ export async function createPost(post) {
 	parsed_post.id = POSTS_TEST.length;
 	
 	POSTS_TEST.push(parsed_post);
+
+	console.log("pushed post",POSTS_TEST);
 	/*
 	const response = await fetch("/api/notes", 
 	{
@@ -87,9 +89,10 @@ export async function updatePost(post) {
 	
 	POSTS_TEST.map( p =>
 		p.id === parsed_post.id ?
-			p : parsed_post
-	);
-	
+		p : parsed_post
+		);
+		
+	console.log("edited post",parsed_post.id,POSTS_TEST);
 	/*
 	const response = await fetchData("/api/notes/" + noteId, 
 		{
