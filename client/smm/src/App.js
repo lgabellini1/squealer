@@ -15,6 +15,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Redirect from './pages/Redirect';
+import Vips from './subpages/Vips';
 
 
 function App() {
@@ -80,6 +81,10 @@ function App() {
 							<Route
 								path='/preferences'
 								element={<PreferencesPage />}
+							/>
+							<Route
+								path='/vips'
+								element={<Vips vips={vips} />}
 							/>
 							<Route
 								path='/*'

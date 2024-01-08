@@ -50,6 +50,9 @@ const AppNavbar = ({ smm, setSmm }) => {
 						<Nav.Item>
 							<Nav.Link as={NavLink} to="/tops" >Tops</Nav.Link>
 						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link as={NavLink} to="/vips" >Vips</Nav.Link>
+						</Nav.Item>
 					</Nav>
 					
 					{ smm && 
