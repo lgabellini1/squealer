@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 import './styles/Login.css';
 import './styles/Nav.css';
+import './styles/Pages.css';
 import AppNavbar from './subpages/AppNavbar';
 import MainPage from './pages/MainPage';
 import FeedPage from './pages/FeedPage';
@@ -13,9 +14,9 @@ import TopsPage from './pages/TopsPage';
 import * as users_api from './network/users_api';
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
 import Redirect from './pages/Redirect';
-import Vips from './subpages/Vips';
+import SignupPage from './pages/SignupPage';
+import VipsPage from './pages/VipsPage';
 
 
 function App() {
@@ -84,7 +85,7 @@ function App() {
 							/>
 							<Route
 								path='/vips'
-								element={<Vips vips={vips} />}
+								element={<VipsPage vips={vips} />}
 							/>
 							<Route
 								path='/*'

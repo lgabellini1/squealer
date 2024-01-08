@@ -63,7 +63,7 @@ const FeedPage = ({ vips }) => {
 								<Form.Check 
 								key={index}
 									type="checkbox"
-									label={vip}
+									label={vip.username}
 									checked={checked[index]}
 									onChange={handleCheckboxChange(index)}
 								/>

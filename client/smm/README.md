@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project structure
+
+`models/` : parser for models, so also contains the expected fields for each type of data.  
+
 ## Available Scripts
 
 In the project directory, you can run:

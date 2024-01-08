@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import * as posts_api from "../network/posts_api";
 import Post from "../components/Post";
 import { Container } from "react-bootstrap";
+import { getUsernames } from "../models/models";
 import '../styles/App.css';
 
 
@@ -9,12 +10,24 @@ const Feed = ({ id, className, vips }) => {
 
 	const [ posts, setPosts ] = useState([]);
 	const [ postsLoading, setPostsLoading ] = useState(true);
+	const [ usernames, setUsernames ] = useState([]);
 
+	useEffect(() => {
+		async function loadUsernames() {
+			try {
+				setUsernames(getUsernames(vips));
+			} catch(error) {
+				console.log(error);
+			}
+		}
+		loadUsernames();
+	}, [vips]);
+	
 	useEffect(() => {
 		async function loadPosts() {
 			try {
 				setPostsLoading(true);
-				const posts = await posts_api.fetchPosts(vips);
+				const posts = await posts_api.fetchPosts(usernames);
 				setPosts(posts);
 			} catch(error) {
 				console.log(error);
@@ -23,7 +36,7 @@ const Feed = ({ id, className, vips }) => {
 			}
 		}
 		loadPosts();
-	}, [vips]);
+	}, [usernames]);
 
 	const postsGrid = 
 		<Container fluid id={id} className={`d-flex flex-column ${className}`}>

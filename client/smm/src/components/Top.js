@@ -1,9 +1,10 @@
-import { Card, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import * as posts_api from '../network/posts_api';
 import { Text } from 'react-native';
 import { useEffect, useState } from "react";
 import { REACTION_ICONS } from './Icons';
 import Reaction from './Reaction';
+import { getUsernames } from '../models/models';
 import "../styles/Misc.css";
 
 
@@ -14,21 +15,33 @@ import "../styles/Misc.css";
 const Top = ({ n, users, sort_key }) => {
 
 	const [ ranking, setRanking ] = useState([]);
+	const [ usernames, setUsernames ] = useState([]);	// an array for only usernames
 
 	const TOP_COLORS = ["#FFD700", "#C0C0C0", "#CD7F32"];
 	const DEFAULT_COLOR = "#EEEEEE";
 
 	useEffect(() => {
+		async function loadUsernames() {
+			try {
+				setUsernames(getUsernames(users));
+			} catch(error) {
+				console.log(error);
+			}
+		}
+		loadUsernames();
+	}, [users]);
+
+	useEffect(() => {
 		async function loadRanking() {
 			try {
-				const top = await posts_api.fetchTopPosts(n, users, sort_key);
+				const top = await posts_api.fetchTopPosts(n, usernames, sort_key);
 				setRanking(top);
 			} catch(error) {
 				console.log(error);
 			}
 		}
 		loadRanking();
-	}, [n, users, sort_key]);
+	}, [n, usernames, sort_key]);
 
 
 	return (
@@ -36,7 +49,7 @@ const Top = ({ n, users, sort_key }) => {
 			<Text>
 				sorted by
 					<span className="uppercase" style={{fontWeight:'bold'}}>{` ${sort_key} `}</span>
-					for <span style={{fontWeight:'bold'}}>{users ? users.join(", ") : "all users"}</span>
+					for <span style={{fontWeight:'bold'}}>{usernames ? usernames.join(", ") : "all users"}</span>
 			</Text>
 
 			<ListGroup className="p-0">

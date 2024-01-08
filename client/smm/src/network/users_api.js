@@ -9,7 +9,8 @@ import { USERS_TEST } from "../examples/users.js";
  */
 export async function fetchVips(smm) {
 
-	return USERS_TEST.find( entry => entry.smm === smm ).vips;
+	const vips_names = USERS_TEST.find( entry => entry.username === smm ).vips;
+	return USERS_TEST.filter( entry => vips_names.includes(entry.username) );
 }
 
 
@@ -22,7 +23,7 @@ export async function login(username, email, password) {
 	} else if(password !== entry.password) {
 		throw new Error("Wrong password.");
 	}
-	return USERS_TEST.find( entry => entry.email === email && entry.password === password ).smm;
+	return USERS_TEST.find( entry => entry.email === email && entry.password === password ).username;
 }
 
 
@@ -31,7 +32,7 @@ export async function signup(username, email, password) {
 	// check if email or username are already in use
 	if(USERS_TEST.find( entry => entry.email === email ) !== undefined) {
 		throw new Error("Email already in use.");
-	} else if(USERS_TEST.find( entry => entry.smm === username ) !== undefined) {
+	} else if(USERS_TEST.find( entry => entry.username === username ) !== undefined) {
 		throw new Error("Username already in use.");
 	}
 

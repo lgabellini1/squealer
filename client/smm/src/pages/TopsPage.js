@@ -7,6 +7,7 @@ const TopsPage = ({ vips }) => {
 		<Container className="mainSubpage">
 			
 			<Tops id="tops" className="tops" vips={vips} />
+			
 		</Container>
 	);
 	
